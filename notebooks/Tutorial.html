@@ -1,0 +1,1460 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Usage" href="../usage.html" />
+
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>Tutorial - JupyterJS 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">JupyterJS 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">JupyterJS 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tutorial</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars and line breaks on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+    white-space: pre;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<section id="Tutorial">
+<h1>Tutorial<a class="headerlink" href="#Tutorial" title="Permalink to this heading">#</a></h1>
+<div class="line-block">
+<div class="line">JupyterJS heavily rely on communications between python and javascript kernels, which are asynchronous. It is strongly recommended to execute cells one-by-one instead of running all cells.</div>
+<div class="line">It will be helpful to familiar yourself with common asynchronous behaviors in Jupyter, e.g.,:</div>
+<div class="line">- <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets/issues/2121">print() does not work</a></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jupyterjs</span> <span class="kn">import</span> <span class="n">JupyterJS</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+</pre></div>
+</div>
+</div>
+<section id="0.-Base-Usage">
+<h2>0. Base Usage<a class="headerlink" href="#0.-Base-Usage" title="Permalink to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "630567abf02e410a8c7fff6b224c4c95", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Expect to see an empty display with a console. <img alt="Basic Usage" src="../_images/basicusage.png" /></p>
+</section>
+<section id="1.-Map-Variable-and-Functions">
+<h2>1. Map Variable and Functions<a class="headerlink" href="#1.-Map-Variable-and-Functions" title="Permalink to this heading">#</a></h2>
+<p>JupyterJS provides an interface to bind variables/functions between the JS and Py scope. In other words, both JS/Py kernels have access to those variables/functions.</p>
+<section id="1.1-Variables">
+<h3>1.1 Variables<a class="headerlink" href="#1.1-Variables" title="Permalink to this heading">#</a></h3>
+<p>JupyterJS provides a <em>mapstate</em> method to map state variables between JS and Python. This method must be declared within the constructor.</p>
+<ul class="simple">
+<li><p>Variables declared in python should be in a dict syntax with its initial value.</p></li>
+<li><p>Variables declared in JavaScript are as string.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VariableMapper</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;jsv&#39;</span><span class="p">]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">VariableMapper</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "23c4e2bb18bd4db49767e4be3ac0286b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Expect to see the following result. Note that now the variable <em>pyv</em> has a value as 5. The variable <em>jsv</em> is None because it has not been found in JS programs. <img alt="Expect to see the following result" src="../_images/1.1.png" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now the JS scope can access pyv. Run this cell and you will see an altet window!</span>
+<span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(pyv)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Variables declared in mapstate() are binded to JupyterJS.state.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now change its value in JS.</span>
+<span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;pyv = pyv + 5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Expect to see the following result in the <strong>previous console</strong>. Note that a JupyterJS object is binded to <strong>only one display area</strong> with JupyterJS.display(). Now you can see <em>pyv</em> has a value as 10. <img alt="Example 1.2" src="../_images/1.2.png" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Verify the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">pyv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10
+</pre></div></div>
+</div>
+<p>Recall that jsv has not been found! Now let us define it in JavaScript.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    var jsv = &#39;abc&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">jsv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+abc
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">Variables in mapstate() need to be <strong>JSON-safe</strong>, e.g., numbers, strings, dicts, and lists.</div>
+<div class="line"><strong>Classes are not supported</strong>!</div>
+</div>
+</section>
+<section id="1.2-Functions">
+<h3>1.2 Functions<a class="headerlink" href="#1.2-Functions" title="Permalink to this heading">#</a></h3>
+<p>The <em>mapmethod</em> method provides a convenient way to bind methods. Similarly, it takes an list of single-key object or string.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "747123250d64454294aecef6d95d8656", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">out</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is a py function:&#39;</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MethodMapper</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+    <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyfunc&#39;</span><span class="p">:</span> <span class="n">foo</span><span class="p">},</span> <span class="s1">&#39;jsfunc&#39;</span><span class="p">]</span>
+
+<span class="n">methodw</span> <span class="o">=</span> <span class="n">MethodMapper</span><span class="p">()</span>
+<span class="n">methodw</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1da0010d99164967ae3c7e464465b1e6", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Similarly, now you can see pyfunc and jsfunc in the console. <img alt="Example 1.3" src="../_images/1.3.png" /></p>
+<p>Now you can run pyfunc from JS.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    pyfunc(pyv)</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">methodw</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Check the python console area! <img alt="Example 1.4" src="../_images/1.4.png" /></p>
+<p>Similarly, declare <em>jsfunc</em> and run it from python! Note that methods in <em>mapmethod</em> is attached to JupyterJS.methods.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    const jsfunc = (x, y) =&gt; {</span>
+<span class="s2">        alert(`this is a js function called from py: ${x * 3}, ${y * 4}`);</span>
+<span class="s2">    }</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">methodw</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methodw</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">jsfunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The above is the same as</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methodw</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s1">&#39;jsfunc(1,5)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="1.3-Scope">
+<h3>1.3 Scope<a class="headerlink" href="#1.3-Scope" title="Permalink to this heading">#</a></h3>
+<p>Variables outside mapstate() will lost their scope. This is the default behavior of the built-in IPython.display.Javascript().</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Javascript</span>
+<span class="n">Javascript</span><span class="p">(</span><span class="s2">&quot;var t = 5;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="output_javascript"></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+var t = 5;
+</script></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## you will see errors</span>
+<span class="n">Javascript</span><span class="p">(</span><span class="s2">&quot;t = t + 10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="output_javascript"></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+t = t + 10
+</script></div>
+</div>
+<p>This is the same for JupyterJS.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ScopeTester</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jsv1&#39;</span><span class="p">]</span>
+
+<span class="n">stest</span> <span class="o">=</span> <span class="n">ScopeTester</span><span class="p">()</span>
+<span class="n">stest</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "83139f4a074440b39c836f47f8192bfe", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stest</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;var jsv1 = 2; var jsv2 = 4;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This will work</span>
+<span class="n">stest</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(jsv1)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This will work not</span>
+<span class="n">stest</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(jsv2)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="1.4-Summary">
+<h3>1.4 Summary<a class="headerlink" href="#1.4-Summary" title="Permalink to this heading">#</a></h3>
+<p>Now putting everything together. Run the following codes and play yourself!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is a py function call from JS&#39;</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">JSWidget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;jsv&#39;</span><span class="p">]</span>
+    <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyf&#39;</span><span class="p">:</span> <span class="n">foo</span><span class="p">},</span> <span class="s1">&#39;jsf&#39;</span><span class="p">]</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">JSWidget</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="n">js</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    pyf(4, 3);</span>
+
+<span class="s2">    var jsv = 5;</span>
+
+<span class="s2">    jsv = jsv * 2;</span>
+<span class="s2">    pyv = &#39;abc&#39;</span>
+
+<span class="s2">    const jsf = (x, y) =&gt; {</span>
+<span class="s2">        console.log(&#39;this is a js function called from py: &#39;, x * 3, y);</span>
+<span class="s2">    }</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0bf61012262b4e16b79ad7ca6bb783f3", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">js</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;pyv = 2; alert(pyv * jsv);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="2-Import-JS-packages">
+<h2>2 Import JS packages<a class="headerlink" href="#2-Import-JS-packages" title="Permalink to this heading">#</a></h2>
+<div class="line-block">
+<div class="line">JupyterJS provides helper functions to import es6 and umd packages.</div>
+<div class="line">Check out this <a class="reference external" href="https://blog.sessionstack.com/how-javascript-works-the-module-pattern-comparing-commonjs-amd-umd-and-es6-modules-437f77548437">article</a> for different javascript modules formats.</div>
+<div class="line">⚠️ Importing UMD packages are only allowed in Jupyter Lab (no Notebooks). See <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/3118">https://github.com/jupyterlab/jupyterlab/issues/3118</a>.</div>
+</div>
+<section id="2.1-Import-ES6">
+<h3>2.1 Import ES6<a class="headerlink" href="#2.1-Import-ES6" title="Permalink to this heading">#</a></h3>
+<p>The <em>import_es6</em> helper takes two input: the import command, and the import name.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">D3Widget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">D3Widget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_es6</span><span class="p">(</span><span class="s1">&#39;import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7/+esm&quot;;&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">)</span>
+
+<span class="n">d3w</span> <span class="o">=</span> <span class="n">D3Widget</span><span class="p">()</span>
+<span class="n">d3w</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<script type="module">
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+    window.d3 = d3;
+</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "94d3a454859543a0b6e70b4284201409", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(d3.color.name)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.2-Import-UMD">
+<h3>2.2 Import UMD<a class="headerlink" href="#2.2-Import-UMD" title="Permalink to this heading">#</a></h3>
+<div class="line-block">
+<div class="line">The <em>import_umd</em> helper takes two input: the script url, and the import name.</div>
+<div class="line">⚠️ This does not work in Jupyter Notebooks, but Jupyter Lab only!</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeckGLWidget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DeckGLWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_umd</span><span class="p">(</span><span class="s2">&quot;https://unpkg.com/deck.gl@8.8.23/dist.min.js&quot;</span><span class="p">,</span> <span class="s1">&#39;deck&#39;</span><span class="p">)</span>
+
+<span class="n">deckw</span> <span class="o">=</span> <span class="n">DeckGLWidget</span><span class="p">()</span>
+<span class="n">deckw</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c85d127ea3524d61bdd02e3577d7220a", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deckw</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(deck.version)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="3.-Build-a-customize-JS-visualization">
+<h2>3. Build a customize JS visualization<a class="headerlink" href="#3.-Build-a-customize-JS-visualization" title="Permalink to this heading">#</a></h2>
+<div class="line-block">
+<div class="line">Now you have known most of JupyterJS. The following text provides a hand-on tutorial for building a custom vis!</div>
+<div class="line">JupyterJS requires some (very simple) changes to JS codes to make it works.</div>
+</div>
+<p>In this tutorial, we will use a simple bar chart from <a class="reference external" href="https://observablehq.com/&#64;d3/bar-chart">https://observablehq.com/&#64;d3/bar-chart</a> (ISC license).</p>
+<section id="3.1-Element">
+<h3>3.1 Element<a class="headerlink" href="#3.1-Element" title="Permalink to this heading">#</a></h3>
+<p>JupyterJS has an <em>element</em> property in the JS scope that is binded to the display area. Recall that <em>element</em> cannot exist in python scope because it contains classes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Original JS code</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">const svg = d3.create(&quot;svg&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;\nconst svg = d3.create(&#34;svg&#34;)\n&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This needs be changed to</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">const svg = d3.select(element).append(&quot;svg&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;\nconst svg = d3.select(element).append(&#34;svg&#34;)\n&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="3.2-Functions-and-Variables-in-JS-Scope">
+<h3>3.2 Functions and Variables in JS Scope<a class="headerlink" href="#3.2-Functions-and-Variables-in-JS-Scope" title="Permalink to this heading">#</a></h3>
+<p>To let JupyterJS maps variables and functions declared in JS scope. Those variables/functions must be explictly declared via const/var/let.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Original</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    function BarChart(data, {</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;\n    function BarChart(data, {\n&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Changed to</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    const BarChart = function (data, {</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;\n    const BarChart = function (data, {\n&#39;
+</pre></div></div>
+</div>
+<p>Now the code becomes</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## copy paste</span>
+<span class="n">jscode</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const BarChart = function(data, {</span>
+<span class="s2">  x = (d, i) =&gt; i, // given d in data, returns the (ordinal) x-value</span>
+<span class="s2">  y = d =&gt; d, // given d in data, returns the (quantitative) y-value</span>
+<span class="s2">  title, // given d in data, returns the title text</span>
+<span class="s2">  marginTop = 20, // the top margin, in pixels</span>
+<span class="s2">  marginRight = 0, // the right margin, in pixels</span>
+<span class="s2">  marginBottom = 30, // the bottom margin, in pixels</span>
+<span class="s2">  marginLeft = 40, // the left margin, in pixels</span>
+<span class="s2">  width = 640, // the outer width of the chart, in pixels</span>
+<span class="s2">  height = 400, // the outer height of the chart, in pixels</span>
+<span class="s2">  xDomain, // an array of (ordinal) x-values</span>
+<span class="s2">  xRange = [marginLeft, width - marginRight], // [left, right]</span>
+<span class="s2">  yType = d3.scaleLinear, // y-scale type</span>
+<span class="s2">  yDomain, // [ymin, ymax]</span>
+<span class="s2">  yRange = [height - marginBottom, marginTop], // [bottom, top]</span>
+<span class="s2">  xPadding = 0.1, // amount of x-range to reserve to separate bars</span>
+<span class="s2">  yFormat, // a format specifier string for the y-axis</span>
+<span class="s2">  yLabel, // a label for the y-axis</span>
+<span class="s2">  color = &quot;currentColor&quot; // bar fill color</span>
+<span class="s2">} = </span><span class="si">{}</span><span class="s2">) {</span>
+<span class="s2">  // Compute values.</span>
+<span class="s2">  const X = d3.map(data, x);</span>
+<span class="s2">  const Y = d3.map(data, y);</span>
+
+<span class="s2">  // Compute default domains, and unique the x-domain.</span>
+<span class="s2">  if (xDomain === undefined) xDomain = X;</span>
+<span class="s2">  if (yDomain === undefined) yDomain = [0, d3.max(Y)];</span>
+<span class="s2">  xDomain = new d3.InternSet(xDomain);</span>
+
+<span class="s2">  // Omit any data not present in the x-domain.</span>
+<span class="s2">  const I = d3.range(X.length).filter(i =&gt; xDomain.has(X[i]));</span>
+
+<span class="s2">  // Construct scales, axes, and formats.</span>
+<span class="s2">  const xScale = d3.scaleBand(xDomain, xRange).padding(xPadding);</span>
+<span class="s2">  const yScale = yType(yDomain, yRange);</span>
+<span class="s2">  const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);</span>
+<span class="s2">  const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);</span>
+
+<span class="s2">  // Compute titles.</span>
+<span class="s2">  if (title === undefined) {</span>
+<span class="s2">    const formatValue = yScale.tickFormat(100, yFormat);</span>
+<span class="s2">    title = i =&gt; `$</span><span class="si">{X[i]}</span><span class="se">\n</span><span class="s2">${formatValue(Y[i])}`;</span>
+<span class="s2">  } else {</span>
+<span class="s2">    const O = d3.map(data, d =&gt; d);</span>
+<span class="s2">    const T = title;</span>
+<span class="s2">    title = i =&gt; T(O[i], i, data);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  const svg = d3.select(element).append(&quot;svg&quot;)</span>
+<span class="s2">      .attr(&quot;width&quot;, width)</span>
+<span class="s2">      .attr(&quot;height&quot;, height)</span>
+<span class="s2">      .attr(&quot;viewBox&quot;, [0, 0, width, height])</span>
+<span class="s2">      .attr(&quot;style&quot;, &quot;max-width: 100%; height: auto; height: intrinsic;&quot;);</span>
+
+<span class="s2">  svg.append(&quot;g&quot;)</span>
+<span class="s2">      .attr(&quot;transform&quot;, `translate($</span><span class="si">{marginLeft}</span><span class="s2">,0)`)</span>
+<span class="s2">      .call(yAxis)</span>
+<span class="s2">      .call(g =&gt; g.select(&quot;.domain&quot;).remove())</span>
+<span class="s2">      .call(g =&gt; g.selectAll(&quot;.tick line&quot;).clone()</span>
+<span class="s2">          .attr(&quot;x2&quot;, width - marginLeft - marginRight)</span>
+<span class="s2">          .attr(&quot;stroke-opacity&quot;, 0.1))</span>
+<span class="s2">      .call(g =&gt; g.append(&quot;text&quot;)</span>
+<span class="s2">          .attr(&quot;x&quot;, -marginLeft)</span>
+<span class="s2">          .attr(&quot;y&quot;, 10)</span>
+<span class="s2">          .attr(&quot;fill&quot;, &quot;currentColor&quot;)</span>
+<span class="s2">          .attr(&quot;text-anchor&quot;, &quot;start&quot;)</span>
+<span class="s2">          .text(yLabel));</span>
+
+<span class="s2">  const bar = svg.append(&quot;g&quot;)</span>
+<span class="s2">      .attr(&quot;fill&quot;, color)</span>
+<span class="s2">    .selectAll(&quot;rect&quot;)</span>
+<span class="s2">    .data(I)</span>
+<span class="s2">    .join(&quot;rect&quot;)</span>
+<span class="s2">      .attr(&quot;x&quot;, i =&gt; xScale(X[i]))</span>
+<span class="s2">      .attr(&quot;y&quot;, i =&gt; yScale(Y[i]))</span>
+<span class="s2">      .attr(&quot;height&quot;, i =&gt; yScale(0) - yScale(Y[i]))</span>
+<span class="s2">      .attr(&quot;width&quot;, xScale.bandwidth());</span>
+
+<span class="s2">  if (title) bar.append(&quot;title&quot;)</span>
+<span class="s2">      .text(title);</span>
+
+<span class="s2">  svg.append(&quot;g&quot;)</span>
+<span class="s2">      .attr(&quot;transform&quot;, `translate(0,${height - marginBottom})`)</span>
+<span class="s2">      .call(xAxis);</span>
+
+<span class="s2">  return svg.node();</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Generate a toy data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;letter&#39;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="mf">0.08167</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;letter&#39;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="mf">0.01492</span><span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now create an instance</span>
+<span class="k">class</span> <span class="nc">D3BarWidget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">D3BarWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1">## register data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">}]</span>
+        <span class="c1">## register the method in JS Code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BarChart&#39;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_es6</span><span class="p">(</span><span class="s1">&#39;import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7/+esm&quot;;&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">)</span>
+
+<span class="n">d3bar</span> <span class="o">=</span> <span class="n">D3BarWidget</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">d3bar</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<script type="module">
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+    window.d3 = d3;
+</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f7c5881beebe4d7bbf7e7b545ef5fb21", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3bar</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">jscode</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now BarChart() can be called from both js/py. However, as its parameter include functions, it is recommended to run from JS side for avoiding unnessary communications.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3bar</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">BarChart(data , {</span>
+<span class="s2">  x: d =&gt; d.letter,</span>
+<span class="s2">  y: d =&gt; d.frequency,</span>
+<span class="s2">  xDomain: d3.groupSort(data, ([d]) =&gt; -d.frequency, d =&gt; d.letter), // sort by descending frequency</span>
+<span class="s2">  yFormat: &quot;%&quot;,</span>
+<span class="s2">  yLabel: &quot;↑ Frequency&quot;,</span>
+<span class="s2">  width: 200,</span>
+<span class="s2">  height: 200,</span>
+<span class="s2">  color: &quot;steelblue&quot;})</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Now you see the visualizations!</div>
+<div class="line"><img alt="d3 bar chart" src="../_images/3.1.png" /></div>
+</div>
+</section>
+<section id="3.3-Making-Visualizations-Interactive-and-Reactive">
+<h3>3.3 Making Visualizations Interactive and Reactive<a class="headerlink" href="#3.3-Making-Visualizations-Interactive-and-Reactive" title="Permalink to this heading">#</a></h3>
+<div class="line-block">
+<div class="line">Now we want to make charts interactive and reactive. Here we implement an on-hover function.</div>
+<div class="line">⚠️ Reactivity is implemented using Proxy in Javascript. As such, only <strong>objects are reactive</strong> (not primitives such as string and numbers). A suggestion is to wrap primitives into an object such as {‘value’: 5}.</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## First register on-hover event in JS</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   bar.on(&#39;mouseover&#39;, (e, d) =&gt; {</span>
+<span class="sd">        hovered.value = d;</span>
+<span class="sd">    });</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#34;\n   bar.on(&#39;mouseover&#39;, (e, d) =&gt; {\n        hovered.value = d;\n    });\n&#34;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## copy paste</span>
+<span class="n">jscode</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">const BarChart = function(data, {</span>
+<span class="s2">  x = (d, i) =&gt; i, // given d in data, returns the (ordinal) x-value</span>
+<span class="s2">  y = d =&gt; d, // given d in data, returns the (quantitative) y-value</span>
+<span class="s2">  title, // given d in data, returns the title text</span>
+<span class="s2">  marginTop = 20, // the top margin, in pixels</span>
+<span class="s2">  marginRight = 0, // the right margin, in pixels</span>
+<span class="s2">  marginBottom = 30, // the bottom margin, in pixels</span>
+<span class="s2">  marginLeft = 40, // the left margin, in pixels</span>
+<span class="s2">  width = 640, // the outer width of the chart, in pixels</span>
+<span class="s2">  height = 400, // the outer height of the chart, in pixels</span>
+<span class="s2">  xDomain, // an array of (ordinal) x-values</span>
+<span class="s2">  xRange = [marginLeft, width - marginRight], // [left, right]</span>
+<span class="s2">  yType = d3.scaleLinear, // y-scale type</span>
+<span class="s2">  yDomain, // [ymin, ymax]</span>
+<span class="s2">  yRange = [height - marginBottom, marginTop], // [bottom, top]</span>
+<span class="s2">  xPadding = 0.1, // amount of x-range to reserve to separate bars</span>
+<span class="s2">  yFormat, // a format specifier string for the y-axis</span>
+<span class="s2">  yLabel, // a label for the y-axis</span>
+<span class="s2">  color = &quot;currentColor&quot; // bar fill color</span>
+<span class="s2">} = </span><span class="si">{}</span><span class="s2">) {</span>
+<span class="s2">  // Compute values.</span>
+<span class="s2">  const X = d3.map(data, x);</span>
+<span class="s2">  const Y = d3.map(data, y);</span>
+
+<span class="s2">  // Compute default domains, and unique the x-domain.</span>
+<span class="s2">  if (xDomain === undefined) xDomain = X;</span>
+<span class="s2">  if (yDomain === undefined) yDomain = [0, d3.max(Y)];</span>
+<span class="s2">  xDomain = new d3.InternSet(xDomain);</span>
+
+<span class="s2">  // Omit any data not present in the x-domain.</span>
+<span class="s2">  const I = d3.range(X.length).filter(i =&gt; xDomain.has(X[i]));</span>
+
+<span class="s2">  // Construct scales, axes, and formats.</span>
+<span class="s2">  const xScale = d3.scaleBand(xDomain, xRange).padding(xPadding);</span>
+<span class="s2">  const yScale = yType(yDomain, yRange);</span>
+<span class="s2">  const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);</span>
+<span class="s2">  const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);</span>
+
+<span class="s2">  // Compute titles.</span>
+<span class="s2">  if (title === undefined) {</span>
+<span class="s2">    const formatValue = yScale.tickFormat(100, yFormat);</span>
+<span class="s2">    title = i =&gt; `$</span><span class="si">{X[i]}</span><span class="se">\n</span><span class="s2">${formatValue(Y[i])}`;</span>
+<span class="s2">  } else {</span>
+<span class="s2">    const O = d3.map(data, d =&gt; d);</span>
+<span class="s2">    const T = title;</span>
+<span class="s2">    title = i =&gt; T(O[i], i, data);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  const svg = d3.select(element).append(&quot;svg&quot;)</span>
+<span class="s2">      .attr(&#39;id&#39;, &#39;reactived3bar&#39;)</span>
+<span class="s2">      .attr(&quot;width&quot;, width)</span>
+<span class="s2">      .attr(&quot;height&quot;, height)</span>
+<span class="s2">      .attr(&quot;viewBox&quot;, [0, 0, width, height])</span>
+<span class="s2">      .attr(&quot;style&quot;, &quot;max-width: 100%; height: auto; height: intrinsic;&quot;);</span>
+
+<span class="s2">  console.log(element, svg)</span>
+
+<span class="s2">  svg.append(&quot;g&quot;)</span>
+<span class="s2">      .attr(&quot;transform&quot;, `translate($</span><span class="si">{marginLeft}</span><span class="s2">,0)`)</span>
+<span class="s2">      .call(yAxis)</span>
+<span class="s2">      .call(g =&gt; g.select(&quot;.domain&quot;).remove())</span>
+<span class="s2">      .call(g =&gt; g.selectAll(&quot;.tick line&quot;).clone()</span>
+<span class="s2">          .attr(&quot;x2&quot;, width - marginLeft - marginRight)</span>
+<span class="s2">          .attr(&quot;stroke-opacity&quot;, 0.1))</span>
+<span class="s2">      .call(g =&gt; g.append(&quot;text&quot;)</span>
+<span class="s2">          .attr(&quot;x&quot;, -marginLeft)</span>
+<span class="s2">          .attr(&quot;y&quot;, 10)</span>
+<span class="s2">          .attr(&quot;fill&quot;, &quot;currentColor&quot;)</span>
+<span class="s2">          .attr(&quot;text-anchor&quot;, &quot;start&quot;)</span>
+<span class="s2">          .text(yLabel));</span>
+
+<span class="s2">  const bar = svg.append(&quot;g&quot;)</span>
+<span class="s2">      .attr(&quot;fill&quot;, color)</span>
+<span class="s2">    .selectAll(&quot;rect&quot;)</span>
+<span class="s2">    .data(I)</span>
+<span class="s2">    .join(&quot;rect&quot;)</span>
+<span class="s2">      .attr(&quot;x&quot;, i =&gt; xScale(X[i]))</span>
+<span class="s2">      .attr(&quot;y&quot;, i =&gt; yScale(Y[i]))</span>
+<span class="s2">      .attr(&quot;height&quot;, i =&gt; yScale(0) - yScale(Y[i]))</span>
+<span class="s2">      .attr(&quot;width&quot;, xScale.bandwidth());</span>
+
+<span class="s2">   bar.on(&#39;mouseover&#39;, (e, d) =&gt; {</span>
+<span class="s2">        hovered.value = d;</span>
+<span class="s2">    });</span>
+
+<span class="s2">  if (title) bar.append(&quot;title&quot;)</span>
+<span class="s2">      .text(title);</span>
+
+<span class="s2">  svg.append(&quot;g&quot;)</span>
+<span class="s2">      .attr(&quot;transform&quot;, `translate(0,${height - marginBottom})`)</span>
+<span class="s2">      .call(xAxis);</span>
+
+<span class="s2">  return svg.node();</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;letter&#39;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="mf">0.08167</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;letter&#39;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="mf">0.01492</span><span class="p">}]</span>
+
+<span class="c1">## Now create an instance. Note that we add a new hovered variable in the state.</span>
+<span class="k">class</span> <span class="nc">ReactiveD3</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ReactiveD3</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1">## register data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;hovered&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}}]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BarChart&#39;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_es6</span><span class="p">(</span><span class="s1">&#39;import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7/+esm&quot;;&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">)</span>
+
+<span class="n">d3barreactive</span> <span class="o">=</span> <span class="n">ReactiveD3</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">d3barreactive</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<script type="module">
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+    window.d3 = d3;
+</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "40385d1841b042bab39a04f2bd00b2ff", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3barreactive</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">jscode</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3barreactive</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">BarChart(data , {</span>
+<span class="s2">  x: d =&gt; d.letter,</span>
+<span class="s2">  y: d =&gt; d.frequency,</span>
+<span class="s2">  xDomain: d3.groupSort(data, ([d]) =&gt; -d.frequency, d =&gt; d.letter), // sort by descending frequency</span>
+<span class="s2">  yFormat: &quot;%&quot;,</span>
+<span class="s2">  yLabel: &quot;↑ Frequency&quot;,</span>
+<span class="s2">  width: 200,</span>
+<span class="s2">  height: 200,</span>
+<span class="s2">  color: &quot;steelblue&quot;})</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now you have a reactive bar chart. Note how <em>hovered</em> changed when hovering on the bar! <img alt="image1" src="../_images/d3barreactive.gif" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="../usage.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Usage</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, wowryu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#0.-Base-Usage">0. Base Usage</a></li>
+<li><a class="reference internal" href="#1.-Map-Variable-and-Functions">1. Map Variable and Functions</a><ul>
+<li><a class="reference internal" href="#1.1-Variables">1.1 Variables</a></li>
+<li><a class="reference internal" href="#1.2-Functions">1.2 Functions</a></li>
+<li><a class="reference internal" href="#1.3-Scope">1.3 Scope</a></li>
+<li><a class="reference internal" href="#1.4-Summary">1.4 Summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#2-Import-JS-packages">2 Import JS packages</a><ul>
+<li><a class="reference internal" href="#2.1-Import-ES6">2.1 Import ES6</a></li>
+<li><a class="reference internal" href="#2.2-Import-UMD">2.2 Import UMD</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#3.-Build-a-customize-JS-visualization">3. Build a customize JS visualization</a><ul>
+<li><a class="reference internal" href="#3.1-Element">3.1 Element</a></li>
+<li><a class="reference internal" href="#3.2-Functions-and-Variables-in-JS-Scope">3.2 Functions and Variables in JS Scope</a></li>
+<li><a class="reference internal" href="#3.3-Making-Visualizations-Interactive-and-Reactive">3.3 Making Visualizations Interactive and Reactive</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
