@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Usage" href="../usage.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
         <title>Tutorial - JupyterJS 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -455,8 +455,90 @@ div.rendered_html tbody tr:hover {
 <div class="line">It will be helpful to familiar yourself with common asynchronous behaviors in Jupyter, e.g.,:</div>
 <div class="line">- <a class="reference external" href="https://github.com/jupyter-widgets/ipywidgets/issues/2121">print() does not work</a></div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3<span class="w"> </span>install<span class="w"> </span>jupyterjs-0.1.0.dev1-py3-none-any.whl
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-yellow-fg">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span><span class="ansi-yellow-fg">
+</span>Processing ./jupyterjs-0.1.0.dev1-py3-none-any.whl
+Requirement already satisfied: bs4==0.0.1 in /usr/local/lib/python3.9/site-packages (from jupyterjs==0.1.0.dev1) (0.0.1)
+Requirement already satisfied: ipywidgets&gt;=7.0.0 in /usr/local/lib/python3.9/site-packages (from jupyterjs==0.1.0.dev1) (7.6.3)
+Requirement already satisfied: esprima==4.0.1 in /usr/local/lib/python3.9/site-packages (from jupyterjs==0.1.0.dev1) (4.0.1)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/site-packages (from bs4==0.0.1-&gt;jupyterjs==0.1.0.dev1) (4.10.0)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /usr/local/lib/python3.9/site-packages (from ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (5.1.3)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.9/site-packages (from ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (3.5.1)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.9/site-packages (from ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (6.0.3)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /usr/local/lib/python3.9/site-packages (from ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.0.0)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /usr/local/lib/python3.9/site-packages (from ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (5.0.5)
+Requirement already satisfied: ipython&gt;=4.0.0 in /usr/local/lib/python3.9/site-packages (from ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (7.26.0)
+Requirement already satisfied: appnope in /usr/local/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.1.2)
+Requirement already satisfied: tornado&lt;7.0,&gt;=4.2 in /usr/local/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (6.1)
+Requirement already satisfied: jupyter-client&lt;7.0 in /usr/local/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (6.1.12)
+Requirement already satisfied: matplotlib-inline&lt;0.2.0,&gt;=0.1.0 in /usr/local/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.1.2)
+Requirement already satisfied: debugpy&lt;2.0,&gt;=1.0.0 in /usr/local/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.4.1)
+Requirement already satisfied: jedi&gt;=0.16 in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.18.0)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.7.5)
+Requirement already satisfied: pygments in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (2.14.0)
+Requirement already satisfied: backcall in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.2.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (3.0.19)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (66.0.0)
+Requirement already satisfied: pexpect&gt;4.3 in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (4.8.0)
+Requirement already satisfied: decorator in /usr/local/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (5.0.9)
+Requirement already satisfied: ipython-genutils in /usr/local/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.2.0)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (3.2.0)
+Requirement already satisfied: jupyter-core in /usr/local/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (4.7.1)
+Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.9/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (6.4.0)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/site-packages (from beautifulsoup4-&gt;bs4==0.0.1-&gt;jupyterjs==0.1.0.dev1) (2.3.1)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /usr/local/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.8.2)
+Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (21.2.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.18.0)
+Requirement already satisfied: six&gt;=1.11.0 in /usr/local/lib/python3.9/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.16.0)
+Requirement already satisfied: pyzmq&gt;=13 in /usr/local/lib/python3.9/site-packages (from jupyter-client&lt;7.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (22.2.0)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.9/site-packages (from jupyter-client&lt;7.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (2.8.1)
+Requirement already satisfied: nbconvert in /usr/local/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (6.1.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.10.1)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (3.0.1)
+Requirement already satisfied: prometheus-client in /usr/local/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.11.0)
+Requirement already satisfied: Send2Trash&gt;=1.5.0 in /usr/local/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.7.1)
+Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (20.1.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.7.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.9/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.2.5)
+Requirement already satisfied: cffi&gt;=1.0.0 in /usr/local/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.14.6)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/site-packages (from jinja2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (2.0.1)
+Requirement already satisfied: bleach in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (4.0.0)
+Requirement already satisfied: defusedxml in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.7.1)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.5.3)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.4.3)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.3)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.8.4)
+Requirement already satisfied: testpath in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.5.0)
+Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.9/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.1.2)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.9/site-packages (from cffi&gt;=1.0.0-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (2.20)
+Requirement already satisfied: nest-asyncio in /usr/local/lib/python3.9/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.5.1)
+Requirement already satisfied: async-generator in /usr/local/lib/python3.9/site-packages (from nbclient&lt;0.6.0,&gt;=0.5.0-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (1.10)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (0.5.1)
+Requirement already satisfied: packaging in /usr/local/lib/python3.9/site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.9/site-packages (from packaging-&gt;bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.0.0-&gt;jupyterjs==0.1.0.dev1) (2.4.7)
+Installing collected packages: jupyterjs
+<span class="ansi-yellow-fg">  DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span><span class="ansi-yellow-fg">
+</span><span class="ansi-yellow-fg">DEPRECATION: Configuring installation scheme with distutils config files is deprecated and will no longer work in the near future. If you are using a Homebrew or Linuxbrew Python, please see discussion at https://github.com/Homebrew/homebrew-core/issues/76621</span><span class="ansi-yellow-fg">
+</span>Successfully installed jupyterjs-0.1.0.dev1
+
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip available: <span class="ansi-red-fg">22.3.1</span> -&gt; <span class="ansi-green-fg">23.0</span>
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">python3.9 -m pip install --upgrade pip</span>
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jupyterjs</span> <span class="kn">import</span> <span class="n">JupyterJS</span>
@@ -467,7 +549,7 @@ div.rendered_html tbody tr:hover {
 <section id="0.-Base-Usage">
 <h2>0. Base Usage<a class="headerlink" href="#0.-Base-Usage" title="Permalink to this heading">#</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">()</span>
@@ -479,7 +561,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "630567abf02e410a8c7fff6b224c4c95", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6019ea27a2b24116b8240bbf9d6ff657", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Expect to see an empty display with a console. <img alt="Basic Usage" src="../_images/basicusage.png" /></p>
 </section>
@@ -494,12 +576,10 @@ div.rendered_html tbody tr:hover {
 <li><p>Variables declared in JavaScript are as string.</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VariableMapper</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
-    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;jsv&#39;</span><span class="p">]</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">VariableMapper</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">(</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;jsv&#39;</span><span class="p">])</span>
 <span class="n">w</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -508,11 +588,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "23c4e2bb18bd4db49767e4be3ac0286b", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "badc04133ae94d3a8eee46c6854f4872", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Expect to see the following result. Note that now the variable <em>pyv</em> has a value as 5. The variable <em>jsv</em> is None because it has not been found in JS programs. <img alt="Expect to see the following result" src="../_images/1.1.png" /></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now the JS scope can access pyv. Run this cell and you will see an altet window!</span>
@@ -522,7 +602,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Variables declared in mapstate() are binded to JupyterJS.state.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now change its value in JS.</span>
@@ -532,7 +612,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Expect to see the following result in the <strong>previous console</strong>. Note that a JupyterJS object is binded to <strong>only one display area</strong> with JupyterJS.display(). Now you can see <em>pyv</em> has a value as 10. <img alt="Example 1.2" src="../_images/1.2.png" /></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Verify the results</span>
@@ -550,7 +630,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Recall that jsv has not been found! Now let us define it in JavaScript.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -558,6 +638,23 @@ div.rendered_html tbody tr:hover {
 <span class="s2">&quot;&quot;&quot;</span>
 <span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">jsv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{}
+</pre></div></div>
+</div>
+<p>Run this code again! This is the async behavior of JS/PY communication in Jupyter</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">jsv</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -578,7 +675,7 @@ abc
 <h3>1.2 Functions<a class="headerlink" href="#1.2-Functions" title="Permalink to this heading">#</a></h3>
 <p>The <em>mapmethod</em> method provides a convenient way to bind methods. Similarly, it takes an list of single-key object or string.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
@@ -590,21 +687,17 @@ abc
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "747123250d64454294aecef6d95d8656", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0c69d68923d94ca8875c9736935b599c", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">out</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is a py function:&#39;</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">MethodMapper</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
-    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
-    <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyfunc&#39;</span><span class="p">:</span> <span class="n">foo</span><span class="p">},</span> <span class="s1">&#39;jsfunc&#39;</span><span class="p">]</span>
-
-<span class="n">methodw</span> <span class="o">=</span> <span class="n">MethodMapper</span><span class="p">()</span>
+<span class="n">methodw</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">(</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}],</span> <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyfunc&#39;</span><span class="p">:</span> <span class="n">foo</span><span class="p">},</span> <span class="s1">&#39;jsfunc&#39;</span><span class="p">])</span>
 <span class="n">methodw</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -613,12 +706,12 @@ abc
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1da0010d99164967ae3c7e464465b1e6", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0e83430ba5f44675b8d9994d6f4e301f", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Similarly, now you can see pyfunc and jsfunc in the console. <img alt="Example 1.3" src="../_images/1.3.png" /></p>
 <p>Now you can run pyfunc from JS.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -631,7 +724,7 @@ abc
 <p>Check the python console area! <img alt="Example 1.4" src="../_images/1.4.png" /></p>
 <p>Similarly, declare <em>jsfunc</em> and run it from python! Note that methods in <em>mapmethod</em> is attached to JupyterJS.methods.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -644,7 +737,7 @@ abc
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methodw</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">jsfunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -653,7 +746,7 @@ abc
 </div>
 <p>The above is the same as</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methodw</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s1">&#39;jsfunc(1,5)&#39;</span><span class="p">)</span>
@@ -665,7 +758,7 @@ abc
 <h3>1.3 Scope<a class="headerlink" href="#1.3-Scope" title="Permalink to this heading">#</a></h3>
 <p>Variables outside mapstate() will lost their scope. This is the default behavior of the built-in IPython.display.Javascript().</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Javascript</span>
@@ -674,7 +767,7 @@ abc
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -685,7 +778,7 @@ var t = 5;
 </script></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## you will see errors</span>
@@ -694,7 +787,7 @@ var t = 5;
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -706,13 +799,10 @@ t = t + 10
 </div>
 <p>This is the same for JupyterJS.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ScopeTester</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
-    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jsv1&#39;</span><span class="p">]</span>
-
-<span class="n">stest</span> <span class="o">=</span> <span class="n">ScopeTester</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stest</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">(</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jsv1&#39;</span><span class="p">])</span>
 <span class="n">stest</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -721,10 +811,10 @@ t = t + 10
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "83139f4a074440b39c836f47f8192bfe", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "589a35a73c69411da0074b5c2767d9b1", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stest</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;var jsv1 = 2; var jsv2 = 4;&quot;</span><span class="p">)</span>
@@ -732,7 +822,7 @@ t = t + 10
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This will work</span>
@@ -741,10 +831,10 @@ t = t + 10
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This will work not</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This will not work</span>
 <span class="n">stest</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(jsv2)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -754,17 +844,13 @@ t = t + 10
 <h3>1.4 Summary<a class="headerlink" href="#1.4-Summary" title="Permalink to this heading">#</a></h3>
 <p>Now putting everything together. Run the following codes and play yourself!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this is a py function call from JS&#39;</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">JSWidget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
-    <span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;jsv&#39;</span><span class="p">]</span>
-    <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyf&#39;</span><span class="p">:</span> <span class="n">foo</span><span class="p">},</span> <span class="s1">&#39;jsf&#39;</span><span class="p">]</span>
-
-<span class="n">w</span> <span class="o">=</span> <span class="n">JSWidget</span><span class="p">()</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">(</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyv&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;jsv&#39;</span><span class="p">],</span> <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;pyf&#39;</span><span class="p">:</span> <span class="n">foo</span><span class="p">},</span> <span class="s1">&#39;jsf&#39;</span><span class="p">])</span>
 <span class="n">w</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 
 <span class="n">js</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -782,14 +868,22 @@ t = t + 10
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7d8c8d3a670643c3bdf3bd9c0da29f3b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0bf61012262b4e16b79ad7ca6bb783f3", "version_major": 2, "version_minor": 0}</script></div>
+<div class="highlight"><pre>
+this is a py function call from JS 8 3
+</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">js</span><span class="p">)</span>
@@ -797,7 +891,7 @@ t = t + 10
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;pyv = 2; alert(pyv * jsv);&quot;</span><span class="p">)</span>
@@ -817,12 +911,12 @@ t = t + 10
 <h3>2.1 Import ES6<a class="headerlink" href="#2.1-Import-ES6" title="Permalink to this heading">#</a></h3>
 <p>The <em>import_es6</em> helper takes two input: the import command, and the import name.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">D3Widget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">D3Widget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">import_es6</span><span class="p">(</span><span class="s1">&#39;import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7/+esm&quot;;&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">)</span>
 
 <span class="n">d3w</span> <span class="o">=</span> <span class="n">D3Widget</span><span class="p">()</span>
@@ -843,10 +937,10 @@ t = t + 10
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "94d3a454859543a0b6e70b4284201409", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9a81eb9480114bd19d2c556a3d4e3e72", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(d3.color.name)&quot;</span><span class="p">)</span>
@@ -861,12 +955,12 @@ t = t + 10
 <div class="line">⚠️ This does not work in Jupyter Notebooks, but Jupyter Lab only!</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeckGLWidget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">DeckGLWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">import_umd</span><span class="p">(</span><span class="s2">&quot;https://unpkg.com/deck.gl@8.8.23/dist.min.js&quot;</span><span class="p">,</span> <span class="s1">&#39;deck&#39;</span><span class="p">)</span>
 
 <span class="n">deckw</span> <span class="o">=</span> <span class="n">DeckGLWidget</span><span class="p">()</span>
@@ -878,10 +972,10 @@ t = t + 10
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c85d127ea3524d61bdd02e3577d7220a", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "30debc78fce4426cb78f0f79a15f52fb", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deckw</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;alert(deck.version)&quot;</span><span class="p">)</span>
@@ -901,7 +995,7 @@ t = t + 10
 <h3>3.1 Element<a class="headerlink" href="#3.1-Element" title="Permalink to this heading">#</a></h3>
 <p>JupyterJS has an <em>element</em> property in the JS scope that is binded to the display area. Recall that <em>element</em> cannot exist in python scope because it contains classes.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Original JS code</span>
@@ -912,7 +1006,7 @@ t = t + 10
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -921,7 +1015,7 @@ t = t + 10
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This needs be changed to</span>
@@ -932,7 +1026,7 @@ t = t + 10
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -945,7 +1039,7 @@ t = t + 10
 <h3>3.2 Functions and Variables in JS Scope<a class="headerlink" href="#3.2-Functions-and-Variables-in-JS-Scope" title="Permalink to this heading">#</a></h3>
 <p>To let JupyterJS maps variables and functions declared in JS scope. Those variables/functions must be explictly declared via const/var/let.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Original</span>
@@ -956,7 +1050,7 @@ t = t + 10
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -965,7 +1059,7 @@ t = t + 10
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Changed to</span>
@@ -976,7 +1070,7 @@ t = t + 10
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -986,7 +1080,7 @@ t = t + 10
 </div>
 <p>Now the code becomes</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## copy paste</span>
@@ -1083,7 +1177,7 @@ t = t + 10
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Generate a toy data</span>
@@ -1092,14 +1186,13 @@ t = t + 10
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now create an instance</span>
 <span class="k">class</span> <span class="nc">D3BarWidget</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">D3BarWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1">## register data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">}]</span>
         <span class="c1">## register the method in JS Code</span>
@@ -1125,10 +1218,10 @@ t = t + 10
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f7c5881beebe4d7bbf7e7b545ef5fb21", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "42ae37646b844717a39ed2c8577804f8", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3bar</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">jscode</span><span class="p">)</span>
@@ -1137,7 +1230,7 @@ t = t + 10
 </div>
 <p>Now BarChart() can be called from both js/py. However, as its parameter include functions, it is recommended to run from JS side for avoiding unnessary communications.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3bar</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -1166,7 +1259,7 @@ t = t + 10
 <div class="line">⚠️ Reactivity is implemented using Proxy in Javascript. As such, only <strong>objects are reactive</strong> (not primitives such as string and numbers). A suggestion is to wrap primitives into an object such as {‘value’: 5}.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## First register on-hover event in JS</span>
@@ -1179,7 +1272,7 @@ t = t + 10
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1188,7 +1281,7 @@ t = t + 10
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## copy paste</span>
@@ -1291,46 +1384,43 @@ t = t + 10
 </pre></div>
 </div>
 </div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## This import d3 globally in this notebook</span>
+<span class="kn">from</span> <span class="nn">jupyterjs</span> <span class="kn">import</span> <span class="n">JupyterJS</span><span class="p">,</span> <span class="n">import_esm</span>
+<span class="n">import_esm</span><span class="p">(</span><span class="s1">&#39;import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7/+esm&quot;;&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;letter&#39;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="mf">0.08167</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;letter&#39;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="mf">0.01492</span><span class="p">}]</span>
-
-<span class="c1">## Now create an instance. Note that we add a new hovered variable in the state.</span>
-<span class="k">class</span> <span class="nc">ReactiveD3</span><span class="p">(</span><span class="n">JupyterJS</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ReactiveD3</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="c1">## register data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;hovered&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}}]</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BarChart&#39;</span><span class="p">]</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">import_es6</span><span class="p">(</span><span class="s1">&#39;import * as d3 from &quot;https://cdn.jsdelivr.net/npm/d3@7/+esm&quot;;&#39;</span><span class="p">,</span> <span class="s1">&#39;d3&#39;</span><span class="p">)</span>
-
-<span class="n">d3barreactive</span> <span class="o">=</span> <span class="n">ReactiveD3</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">d3barreactive</span> <span class="o">=</span> <span class="n">JupyterJS</span><span class="p">(</span><span class="n">mapstate</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;hovered&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}}],</span>
+                         <span class="n">mapmethod</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BarChart&#39;</span><span class="p">]</span>  <span class="p">)</span>
 <span class="n">d3barreactive</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area rendered_html docutils container">
-<script type="module">
-    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-    window.d3 = d3;
-</script></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "40385d1841b042bab39a04f2bd00b2ff", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a85ccc0cd0f846479a3ba57887cd734d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3barreactive</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="n">jscode</span><span class="p">)</span>
@@ -1338,7 +1428,7 @@ t = t + 10
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d3barreactive</span><span class="o">.</span><span class="n">javascript</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -1447,9 +1537,6 @@ t = t + 10
     </aside>
   </div>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
