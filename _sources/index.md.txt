@@ -15,6 +15,10 @@ JupyterJS also supports importing ES6/UMD libraries and binding functions/callba
 
 ![alt text](deckgl.gif)
 
+You can even extend/override Vega-Lite methods to add reactivity and lasso!
+
+![alt text](vegalite.gif)
+
 ## How JupyterJS works?
 ![alt text](adaptor.jpg)
 
